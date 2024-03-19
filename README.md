@@ -3,7 +3,7 @@
    Для запуска нужно напечатать следующие команды в терминале линукса:
    1.
    ```
-    g++ -std=c++20 -o main FastTypingcpp
+    g++ -std=c++20 -o main FastTyping.cpp
     
    ```
    2.
