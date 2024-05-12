@@ -8,8 +8,11 @@
 #include "Speed.h"
 #include "UserRequest.h"
 
-
-class FastTyping : public Error, public Speed {
+namespace RandomUtil {
+  std::random_device rd;
+  std::mt19937 gen(rd());
+}
+class FastTyping : public Error, public CalculatingSpeed {
  public:
   std::string GetRandomText(const std::string& filename) {
     std::ifstream file(filename);
@@ -20,7 +23,7 @@ class FastTyping : public Error, public Speed {
       }
       file.close();
 
-      uint64_t random_index = Randomizer();
+      uint64_t random_index = PickRandomNumber();
       std::cout <<fence;
       std::cout << generated_text << text_to_type[random_index] << std::endl;
       start_time = std::chrono::steady_clock::now();
@@ -31,11 +34,9 @@ class FastTyping : public Error, public Speed {
     return "";
   }
 
-  uint64_t Randomizer() {
-    std::random_device rd;
-    std::mt19937 gen(rd());
+  uint64_t PickRandomNumber() {
     std::uniform_int_distribution<> dis(0, (int)text_to_type.size() - 1);
-    uint64_t random_index = dis(gen);
+    uint64_t random_index = dis(RandomUtil::gen);
     return random_index;
   }
 

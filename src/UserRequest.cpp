@@ -18,14 +18,16 @@ void Request::TypingRequest(std::string& userInput) {
 void Request::RestartRequest() {
   std::string restart = "Press 'Enter' to retest or 'q' to end: ";
   std::string programme_completed = "Program completed";
+  std::string q_little = "q";
+  std::string q_big = "Q";
   std::cout << restart;
 
-  char key;
-  std::cin.get(key);
+  std::string key;
+  std::getline(std::cin, key);
   //std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
   std::cout << std::endl;
   // Проверка нажатой клавиши для определения продолжения или завершения цикла
-  if (key == 'q' || key == 'Q') {
+  if (key == q_little || key == q_big) {
     std::cout << programme_completed << std::endl;
     exit(0);
   }

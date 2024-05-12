@@ -7,7 +7,7 @@ include_directories(Header)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin)
 configure_file(Dictionary.txt ${CMAKE_CURRENT_BINARY_DIR}/bin/Dictionary.txt COPYONLY)
-add_executable(tpproject_aliev_usmon  Dictionary.txt
+add_executable(tpproject_aliev_usmon
         FastTyping.cpp
         src/ErrorStatistics.cpp
         src/Speed.cpp

@@ -8,7 +8,7 @@ void Error::DisplayErrors(const std::string& userInput, const std::string& origi
   std::cout <<fence;
   for (size_t i = 0; i < original.size() && i < userInput.size(); ++i) {
     if (original[i] != userInput[i]) {
-      errors++;
+      ++errors;
       std::cout << error_position << i << expected_symbol << original[i] << got_symbol << userInput[i] << next_line;
     }
   }
@@ -18,13 +18,13 @@ void Error::DisplayErrors(const std::string& userInput, const std::string& origi
   }
 }
 uint64_t Error::CalculateAccuracy(const std::string& userInput, const std::string& original) {
-  uint64_t correct_characters = 0;
+  uint64_t matching_characters = 0;
   for (size_t i = 0; i < original.size() && i < userInput.size(); ++i) {
     if (original[i] == userInput[i]) {
-      correct_characters++;
+      ++matching_characters;
     }
   }
 
-  double accuracy = static_cast<double>(correct_characters) / original.size() * 100.0;
+  double accuracy = static_cast<double>(matching_characters) / original.size() * 100.0;
   return static_cast<uint64_t>(accuracy);
 }
